@@ -1,0 +1,27 @@
+class Solution:
+    def lowerbound(lists,l,u,target):
+        while(l<=u):
+            mid=(l+u)>>1
+            if lists[mid]>=target:
+                u=mid-1
+
+            else:
+                l=mid+1
+
+        return l
+    def upperbound(lists,l,u,target):
+        while(l<=u):
+            mid=(l+u)>>1
+            if lists[mid]<=target:
+                l=mid+1
+
+            else:
+                u=mid-1
+        return u
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        lower=Solution.lowerbound(nums,0,len(nums)-1,target)
+        upper=Solution.upperbound(nums,0,len(nums)-1,target)
+        if upper<lower:
+            return [-1,-1]
+        return [lower,upper]
+        
