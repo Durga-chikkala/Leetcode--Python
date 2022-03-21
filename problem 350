@@ -1,0 +1,24 @@
+class Solution:
+    def binary(self,b,t):
+        l=0
+        h=len(b)-1
+        while(l<=h):
+            mid=(l+h)>>1
+            if b[mid]==t:
+                return True
+            elif b[mid]>t:
+                h=mid-1
+            else:
+                l=mid+1
+        return False
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        nums2.sort()
+        l=[]
+        for i in range(len(nums1)):
+            if Solution.binary(self,nums2,nums1[i]):
+                l.append(nums1[i])
+                del nums2[nums2.index(nums1[i])]
+        return l
+        
+        
+        
