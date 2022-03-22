@@ -1,0 +1,21 @@
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        l=0
+        n=len(nums)-1
+        h=len(nums)-1
+        while(l<=h):
+            mid=(l+h)>>1
+            if nums[mid]>nums[0] and nums[mid]>nums[n]:
+                if nums[n]<nums[0]:
+                    l=mid+1
+                else:
+                    h=mid-1
+            elif nums[mid]>=nums[0] and nums[mid]<nums[n]:
+                h=mid-1  
+            elif nums[mid]>=nums[0] and nums[mid]>nums[n]:
+                l=mid+1
+            else:
+                h=mid-1
+        return nums[l]
+                
+        
